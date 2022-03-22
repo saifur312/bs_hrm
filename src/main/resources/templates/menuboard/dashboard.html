@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+<div class="container-fluid">
+  <div class="row form-heading">
+        <div class="col-lg-2 text-left">
+           <p style="font-style: italic; font-size: smaller;"> dashboard</p>
+        </div>
+        <div class="col-lg-7 text-center">
+          <h3>Dashboard</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+  <div class="row sf-form-body">
+    <div class="col-lg-12 col-12">
+      <div class="row mx-0">
+        <div class="col-12 bg-light mx-auto ">
+            <a href="code-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Code</a>
+            <a href="codelist.html" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Code List</a>
+            <a href="department-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Department</a>
+            <a href="dept-list.html" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Dept List</a>
+            <a href="jobtitle-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Job Title </a>
+            <a href="jobtitle-list.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Job Title List</a>
+            <a href="category-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Category</a>
+            <a href="category-list.html" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Category List</a>   
+            <a href="section-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Section </a>   
+            <a href="section-list.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Section List</a>
+            <a href="employee-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Employee</a>
+            <a href="employee-list" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Employee List</a>
+            <a href="dependents-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Dependents</a>
+            <a href="dependents-list" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Dependents List</a>
+            <a href="nominee-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Nominee </a>
+            <a href="education-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Education</a>
+            <a href="education-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Education List</a>
+            <a href="experience-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Experience</a>
+            <a href="experience-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Experience List</a>
+            <a href="address-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Address</a>
+            <a href="bankInfo-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Bank Info</a>
+            <a href="bankinfo-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Bank Info List</a>
+            <a href="allowance-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Allowance</a>
+            <a href="allowance-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Allowance List</a>
+            <a href="deduction-add" class="btn btn-success btn-lg mt-2 mt-2 col-lg-2 mr-2">Deduction </a>
+            <a href="deduction-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Deduction List</a>
+            <a href="overtime-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Overtime </a>
+            <a href="overtime-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Overtime List</a>
+            <a href="loan-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Loan </a>
+            <a href="loan-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Loan List</a>
+            <a href="leave-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Leave</a>
+            <a href="leave-list" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Leave List</a>
+            <a href="statchange-add" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Status Change </a>
+            <a href="monthly-salary.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Monthly Salary </a>
+            <a href="total-salary.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Total Salary </a>
+            <a href="monthly-salary-chart.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Monthly Salary Pie Chart </a>
+            <a href="monthly-salary-bar-chart.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Monthly Salary Bar Chart  </a>
+            <a href="monthly-salary-line-chart.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Monthly Salary Line Chart  </a>
+            <a href="calculate-monthly-salary.html" class="btn btn-success btn-lg mt-2 col-lg-2 mr-2">Calculate Salary  </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright @BilkisSoft. All rights reserved.</p>
+          </div>
+        </div>
+  </div>
+</footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+    <script src="js/flatpickr_4.6.9.js"></script>   
+    <script type="text/javascript">
+    
+    </script>
+  </body>
+</html>

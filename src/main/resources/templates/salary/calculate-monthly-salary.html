@@ -1,0 +1,88 @@
+<!-- ==============================================================
+Author: Md. Saifur Rahman 
+Created Date:18-Dec-202
+Last Update: 06-Jan-2021
+============================================================== -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculate Monthly Salary </title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-1 text-left">
+          <h5> </h5>
+        </div>
+        <div class="col-lg-6 text-center">
+          <h3>Calculate Monthly Salary</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+	<div class="row sf-form-body">
+		<div class="col-lg-12 col-12">
+		      <div class="row mx-0">
+		      
+              <form class="form-group row col-lg-12" action="#" th:action="@{/calculate-monthly-salary}" method="post">
+	              <div class="form-group row col-lg-12 mt-4">
+	                <label for="religion" class="col-form-label col-lg-3"><b>
+	                	<span class="float-left">Select Month</span>
+	                	<span class="float-right">:</span></b>
+	                </label>
+	                <div class="input-group col-lg-7 findBy">
+					  <select class="form-control" id="salaryMonth" name="salaryMonth" required="required">
+					    <option value="0"> Select One </option>
+					    <option value="1"> January </option>
+					    <option value="2"> February </option>
+					    <option value="3"> March  </option>
+					    <option value="4"> April </option>
+					    <option value="5"> May </option>
+					    <option value="6"> June </option>
+					    <option value="7"> July </option>
+					    <option value="8"> August </option>
+					    <option value="9"> September </option>
+					    <option value="10"> October </option>
+					    <option value="11"> November </option>
+					    <option value="12"> December </option>
+					  </select>
+	                </div>
+					<div class="col-lg-2">
+						<button type="submit" class="btn btn-success btn-lg col-lg-12">Caculate </button> 
+					</div>
+	          	  </div>
+	              
+              </form>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script> 
+    <script src="js/flatpickr_4.6.9.js"></script>  
+    <script src="js/bsoft/bsoft.js"></script>    
+    <script th:inline="javascript">  
+    </script>
+  </body>
+</html>

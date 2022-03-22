@@ -1,0 +1,146 @@
+<!-- ==============================================================
+Author: Md. Saifur Rahman 
+Created Date: 10-Jan-2021
+Last Update: 12-Jan-2021
+============================================================== -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Code Setup</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-3 text-center">
+          <h5>code</h5>
+        </div>
+        <div class="col-lg-6 text-center">
+          <h3>Code Information</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+<div class="row sf-form-body">
+<div class="col-lg-12 col-12">
+      <div class="row mx-0">
+        <ul class="tab col-lg-12">
+          <li class="col-lg-2"> 		<a href="/department-add"	class="btn btn-lg"> <h3> 	Department	</h3> </a> 	</li>
+          <li class="col-lg-2 active"> 	<a href="/section-add"		class="btn btn-lg"> <h3>	Section		</h3> </a>	</li>
+          <li class="col-lg-2">			<a href="/category-add"		class="btn btn-lg"> <h3>	Category	</h3> </a>	</li>
+          <li class="col-lg-2">			<a href="/jobtitle-add"		class="btn btn-lg"> <h3>	Job Title	</h3> </a>	</li>
+          <li class="col-lg-2">			<a href="/code-add"			class="btn btn-lg"> <h3>	Code		</h3> </a>	</li>
+        </ul>
+<div class="col-12 card bg-light mx-auto">
+  <form class="card-body label" action="#" th:action="@{code-add-save}" th:object="${code}" method="post">
+<div class="row" id="salaryAddition">
+  
+  <div class="form-group row col-lg-12">
+	  <label for="codeId" class="col-form-label col-lg-3"><span class="float-left">Code Id</span><span class="float-right">:</span></label>
+	  <div class="col-lg-7">
+	    <input type="text" class="form-control" id="" th:field="*{codeId}" readonly="readonly">
+	  </div>
+  </div>
+<div class="form-group row col-lg-12">
+  <label for="codeType" class="col-form-label col-lg-3"><span class="float-left">Code Type</span><span class="float-right">:</span></label>
+  <div class="col-lg-7">
+        <select name="select" class="form-control" th:field="*{codeType}">
+			<option value="Dv">Division</option>
+			<option value="Ds">District</option>
+			<option value="SDs">Sub District</option>
+			<option value="Ci">City</option>
+			<option value="V">Village</option>
+			<option value="P">Post Office</option>
+			<option value="A">Area</option>
+        </select>
+  </div>
+</div>
+<div class="form-group row col-lg-12">
+  <label for="name" class="col-form-label col-lg-3"><span class="float-left">Code Name</span><span class="float-right">:</span></label>
+  <div class="col-lg-7">
+    <input type="text" class="form-control" th:field="*{name}" required="required" >
+  </div>
+</div>
+<div class="form-group row col-lg-12">
+  <label for="description" class="col-form-label col-lg-3"><span class="float-left">Description</span><span class="float-right">:</span></label>
+  <div class="col-lg-7">
+    <input type="text" class="form-control" th:field="*{description}" >
+  </div>
+</div>
+
+      <div class="form-group row col-lg-12">
+        <label for="status" class="col-form-label col-lg-3"><span class="float-left">Status</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <select class="form-control chosen-select" th:field="*{status}" required="required">
+                <option th:value="1">Active</option>
+                <option th:value="0">Inactive</option>
+          </select>
+		</div>
+      </div>
+      <div class="form-group row col-lg-12">
+        <label for="filler1" class="col-form-label col-lg-3"><span class="float-left">Filler-1</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" th:field="*{filler1}">
+		</div>
+      </div>
+      <div class="form-group row col-lg-12">
+        <label for="filler2" class="col-form-label col-lg-3"><span class="float-left">Filler-2</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" th:field="*{filler2}">
+		</div>
+      </div>
+      <div class="form-group row col-lg-12">
+        <label for="filler3" class="col-form-label col-lg-3"><span class="float-left">Filler-3</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" th:field="*{filler3}">
+		</div>
+      </div>
+      <div class="form-group row col-lg-12">
+        <label for="filler4" class="col-form-label col-lg-3"><span class="float-left">Filler-4</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" th:field="*{filler4}">
+		</div>
+      </div>
+      <div class="form-group row col-lg-12">
+        <label for="filler5" class="col-form-label col-lg-3"><span class="float-left">Filler-5</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" th:field="*{filler5}">
+		</div>
+      </div>
+	<div class="form-group col-lg-12 text-center mt-lg-4">
+  		<a href="#" class="btn btn-danger btn-lg col-lg-2 mr-5 col-sm-5 col-xs-3" role="button">Cancel</a>
+        <button class="btn btn-success btn-lg col-lg-2 col-sm-5 col-xs-3" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+        </div>
+</div>
+        </div>
+  </div>
+  </div>
+<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+</footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <script type="text/javascript">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!-- ==============================================================
+Author: Md. Saifur Rahman 
+Created Date:18-Dec-202
+Last Update: 06-Jan-2021
+============================================================== -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monthly Salary </title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-1 text-left">
+          <h5> </h5>
+        </div>
+        <div class="col-lg-6 text-center">
+          <h3>Monthly Salary</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+	<div class="row sf-form-body">
+		<div class="col-lg-12 col-12">
+		      <div class="row mx-0">
+		      
+              <form class="form-group row col-lg-12" action="#" th:action="@{/show-monthly-salary}" method="post">
+	              <div class="form-group row col-lg-12 mt-4">
+	                <label for="religion" class="col-form-label col-lg-3"><b>
+	                	<span class="float-left">Find Monthly Salary By</span>
+	                	<span class="float-right">:</span></b>
+	                </label>
+	                <div class="input-group col-lg-7 findBy">
+					  <select class="form-control" id="findBy" name="findBy" onchange="changeInput(this.value)"
+					  	required="required">
+					    <option value=""> Select One         </option>
+					    <option value="Month"> Month         </option>
+					    <option value="Year"> Year     </option>
+					    <option value="Employee Type"> Employee Type  </option>
+					    <option value="Department"> Department          </option>
+					  </select>
+	                </div>
+	          	  </div>
+	          	  
+	          	  <div class="form-group row col-lg-12">
+	                <label class="col-form-label col-lg-3"><b>
+	                	<span class="float-left" id="findByValueLabel">Enter </span>
+	                	<span class="float-right">:</span> </b>
+	                </label>
+					<div class="col-lg-6" id="divInput">
+					  <input type="text" class="form-control" id="findByValue" name="findByValue"/>
+	                </div>
+	                
+	                <div class="input-group col-lg-6 empType" style="display: none;" id="divSelect">
+					  <select class="form-control" name="employeeType" id="employeeType">
+					    <option value=""> Select One  </option>
+					    <option value="Doctor"> Doctor  </option>
+					    <option value="Nurse"> Nurse    </option>
+					    <option value="Cashier"> Cashier     </option>
+					    <option value="Manager"> Manager  </option>
+					  </select>
+	                </div>
+	                
+	                <!-- <div class="input-group col-lg-6" style="display: none;" id="divSelectDept">
+					  <select class="form-control" name="department" id="department">
+					    <option value=""> Select One  </option>
+					    <option value="IT"> IT  </option>
+					    <option value="HR"> HR    </option>
+					    <option value="Accounts"> Accounts     </option>
+					    <option value="OPD"> OPD  </option>
+					  </select>
+	                </div> -->
+	                
+	                <div class="input-group col-lg-6 dept" style="display: none;" id="divSelectDept">
+					  <select class="form-control" name="department" id="department">
+					    <option th:each="department : ${departmentList}" 
+					    	th:value="${department.departmentId}" th:text="${department.departmentName}"> IT  </option>
+					  </select>
+	                </div>
+					<div class="col-lg-2">
+						<button type="submit" class="btn btn-success btn-lg col-lg-12">Search </button> 
+					</div>
+	              </div>
+	              
+              </form>
+              
+				<div class="col-12 card bg-light mx-auto" th:if="not ${#lists.isEmpty(monthlySalaryList)}">
+				    <div class="form-group row col-lg-12">
+					  <table width="100%" border="1" class="table table-bordered table-hover table-borderless">
+					    <tbody class="text-center">
+					      <tr class="table-header">
+					        <th scope="col">SL</th>
+					        <th scope="col">Year</th>
+					        <th scope="col">Month</th>
+					        <th scope="col">Type of Employee</th>
+					        <th scope="col">Basic</th> 
+					        <th scope="col">Overtime</th>
+					        <th scope="col">Allowance</th>
+					        <th scope="col">Total Salary</th>
+					        <th scope="col">Loan</th>
+					        <th scope="col">Net Salary</th>
+					      </tr>
+					      <tr th:each="monthlySalary : ${monthlySalaryList}">
+					      	<td th:text="${monthlySalaryStat.count}"></td>
+					      	<td th:text="${monthlySalary.year != null} ? ${monthlySalary.year}">  </td>
+					      	<td th:text="${monthlySalary.monthStr != null} ? ${monthlySalary.monthStr}">  </td>
+					      	<td th:text="${monthlySalary.employeeType != null} ? ${monthlySalary.employeeType}">  </td>
+					      	<td th:text="${monthlySalary.basicSalary}">  </td>
+					      	<td th:text="${monthlySalary.overtimeAmount}">  </td>
+					      	<td th:text="${monthlySalary.allowance}">  </td>
+					      	<td th:text="${monthlySalary.totalSalary}">  </td>
+					      	<td th:text="${monthlySalary.loanDeduction}">  </td>
+					      	<td th:text="${monthlySalary.netSalary}">  </td> 
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script> 
+    <script src="js/flatpickr_4.6.9.js"></script>  
+    <script src="js/bsoft/bsoft.js"></script>    
+    <script th:inline="javascript">   
+    	$(function () {
+    		var previousFindBy = /*[[${prevFind}]]*/;
+    		if(previousFindBy){
+	    		console.log("fetch " + previousFindBy);
+	    		$("div.findBy select").val(previousFindBy).change();
+	    		
+				var prevValue = /*[[${prevValue}]]*/;
+				console.log("prevValue " + prevValue);
+				if(prevValue && previousFindBy==="Department"){
+					$("div.dept select").val(prevValue);
+				}
+				if(prevValue && previousFindBy==="Employee Type"){
+					$("div.empType select").val(prevValue);
+				}
+				if(prevValue && previousFindBy==="Month"){
+					flatpickr( "#findByValue", {disableMobile: "true", dateFormat: "Y M", defaultDate: prevValue});
+				}
+				if(prevValue && previousFindBy==="Year"){
+					flatpickr( "#findByValue", {disableMobile: "true", dateFormat: "Y", defaultDate: prevValue});
+				}
+    		}
+    	});
+    </script>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Salary Deduction Info</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row form-heading">
+        <div class="col-lg-2 text-left"> <p style="font-style: italic;">deduction</p> </div>
+        <div class="col-lg-7 text-center"> <h3> Deduction Info</h3> </div>
+        <div class="col-lg-3 text-center"> <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5> </div>
+      </div>
+      <div class="row sf-form-body">
+        <div class="col-lg-12 col-12">
+          <ul class="tab col-lg-12">
+	          <li class="col-lg-4"> 	<a href="/allowance-add"	class="btn btn-lg "> <h3> 	Allowance	</h3> </a> 	</li>
+	          <li class="col-lg-4"> 	<a href="/deduction-add"	class="btn btn-lg "> <h3>	Deduction	</h3> </a>	</li>
+	          <li class="col-lg-4">		<a href="/bankInfo-add"		class="btn btn-lg "> <h3>	Bank Info	</h3> </a>	</li>
+          </ul>
+          <div class="col-12 card bg-light mx-auto">
+  		    <form class="card-body label" action="#" th:action="@{/deduction-add-save}" th:object="${deduction}" method="post">
+			  <div class="form-group row col-lg-12">
+                <label for="employeeId" class="col-form-label col-lg-2">
+		          <span class="float-left">Employee ID</span><span class="float-right">:</span>
+	            </label>
+	            <div class="col-lg-7">
+  				  <!-- <input list="browsers" class="form-control" name="browser" id="browser">
+  				  <datalist  id="browsers" >
+			          <option th:each="employee : ${allEmployee}" th:text="${employee.employeeId}  +${' '+ employee.fullName}"
+				          th:value="${employee.employeeId}"></option>
+		          </datalist> -->
+				  <select class="form-control" th:field="*{employeeId}">
+					<option th:each="employee : ${allEmployee}" th:text="${employee.employeeId}  +${' '+ employee.fullName}"
+					  th:value="${employee.employeeId}"></option>
+				  </select>
+                </div>
+              </div>
+			  <div class="form-group row col-lg-12">
+                <label for="roomCharge" class="col-form-label col-lg-2"><span class="float-left">Room Charge</span><span class="float-right">:</span></label>
+                <div class="input-group col-lg-7">
+                  <input type="number" step=".01" min="0.00" class="form-control" th:field="*{roomCharge}">
+                </div>
+              </div>
+			  <div class="form-group row col-lg-12">
+	            <label for="incomeTax" class="col-form-label col-lg-2"><span class="float-left">Income Tax</span><span class="float-right">:</span></label>
+	            <div class="input-group col-lg-7">
+	              <input type="number" step=".01" min="0.00" class="form-control" th:field="*{incomeTax}">
+	            </div>
+	          </div>
+              <div class="form-group row col-lg-12">
+                <label for="providentFund" class="col-form-label col-lg-2"><span class="float-left">Provident Fund</span><span class="float-right">:</span></label>
+                <div class="input-group col-lg-7">
+                  <input type="number" step=".01" min="0.00" class="form-control" th:field="*{providentFund}">
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="walefareFund" class="col-form-label col-lg-2"><span class="float-left">Welfare Fund</span><span class="float-right">:</span></label>
+                <div class="input-group col-lg-7">
+                  <input type="number" step=".01" min="0.00" class="form-control" th:field="*{walefareFund}">
+                </div>
+              </div>
+			  <div class="form-group row col-lg-12">
+                <label for="meal" class="col-form-label col-lg-2"><span class="float-left">Meal</span><span class="float-right">:</span></label>
+                <div class="input-group col-lg-7">
+                  <input type="number" step=".01" min="0.00" class="form-control" th:field="*{meal}">
+                </div>
+              </div>
+			  <div class="form-group row col-lg-12">
+	            <label for="otherDeductions" class="col-form-label col-lg-2"><span class="float-left">Other Deductions</span><span class="float-right">:</span></label>
+	            <div class="input-group col-lg-7">
+	              <input type="number" step=".01" min="0.00" class="form-control" th:field="*{otherDeductions}">
+	            </div>
+	          </div>
+	          <div class="form-group row col-lg-12">
+	            <label for="filler1" class="col-form-label col-lg-2"><span class="float-left">Filler-1</span><span class="float-right">:</span></label>
+	            <div class="input-group col-lg-7">
+	              <input type="text" class="form-control" th:field="*{filler1}">
+	            </div>
+	          </div>
+	          <div class="form-group row col-lg-12">
+	            <label for="filler2" class="col-form-label col-lg-2"><span class="float-left">Filler-2</span><span class="float-right">:</span></label>
+	            <div class="input-group col-lg-7">
+	              <input type="text" class="form-control" th:field="*{filler2}">
+	            </div>
+	          </div>
+	          <div class="form-group row col-lg-12">
+	            <label for="filler3" class="col-form-label col-lg-2"><span class="float-left">Filler-3</span><span class="float-right">:</span></label>
+	            <div class="input-group col-lg-7">
+	              <input type="text" class="form-control" th:field="*{filler3}">
+	            </div>
+	          </div>
+	          <div class="form-group row col-lg-12">
+	            <label for="filler4" class="col-form-label col-lg-2"><span class="float-left">Filler-4</span><span class="float-right">:</span></label>
+	            <div class="input-group col-lg-7">
+	              <input type="text" class="form-control" th:field="*{filler4}">
+	            </div>
+	          </div>
+	          <div class="form-group row col-lg-12">
+	            <label for="filler5" class="col-form-label col-lg-2"><span class="float-left">Filler-5</span><span class="float-right">:</span></label>
+	            <div class="input-group col-lg-7">
+	              <input type="text" class="form-control" th:field="*{filler5}">
+	            </div>
+	          </div>
+			  <div class="form-group col-lg-12 text-center mt-lg-4">
+				<a href="#" class="btn btn-danger btn-lg col-lg-2 mr-lg-5" role="button">Cancel</a>
+            	<button type="submit" class="btn btn-success btn-lg col-lg-2">Save </button>
+			  </div>
+			</form>
+          </div>
+		</div> <!-- ./col-lg-12 -->
+      </div> <!-- ./row -->
+	</div> <!-- ./container -->
+	
+	<footer class="text-center form-heading">
+  	  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>  
+    <script type="text/javascript">
+    
+    </script>
+  </body>
+</html>

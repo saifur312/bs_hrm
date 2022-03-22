@@ -1,0 +1,89 @@
+<!-- ==============================================================
+Author: Md. Saifur Rahman 
+Created Date:18-Dec-202
+Last Update: 06-Jan-2021
+============================================================== -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Code List </title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-3">
+          <p style="font-style: italic;">codelist</p>
+        </div>
+        <div class="col-lg-6 text-center">
+          <h3>Code List</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+	<div class="row sf-form-body">
+		<div class="col-lg-12 col-12">
+		      <div class="row mx-0">
+		      	<div class="form-group row col-lg-12">
+					  <table width="100%" border="1" class="table table-bordered table-hover table-borderless">
+					    <tbody class="text-center">
+					      <tr class="table-header">
+					        <th scope="col">SL</th>
+					        <th scope="col">Div Id</th>
+					        <th scope="col">Dist Id</th>
+					        <th scope="col">Sub Dist Id</th>
+					        <th scope="col">City Id</th>
+					        <th scope="col">Postal Id</th>
+					        <th scope="col">Area Id</th>
+					        <th scope="col">Code Type</th>
+					        <th scope="col">Code Name</th>
+					        <th scope="col">Desc</th>
+					        <th scope="col">Status</th>
+					      </tr>
+					      <tr th:each="code : ${codeList}">
+					      	<td th:text="${codeStat.count}"></td>
+					      	<td th:text="${code.divisionId}"> Div Id </td>
+					      	<td th:text="${code.districtId}"> Dist Id </td>
+					      	<td th:text="${code.subDistrictId}"> Sub Dist Id </td>
+					      	<td th:text="${code.cityId}"> City Id </td>
+					      	<td th:text="${code.postalId}"> Postal Id </td>
+					      	<td th:text="${code.areaId}"> Area Id </td>
+					      	<td th:text="${code.codeType}"> Code Type </td>
+					      	<td th:text="${code.codeName}">Code Name</td>
+					      	<td th:text="${code.description}"> Desc </td>
+					      	<td th:text="${code.status}"> Status </td>
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+    <script src="js/emplist.js"></script>
+    <script type="text/javascript">
+    </script>
+  </body>
+</html>

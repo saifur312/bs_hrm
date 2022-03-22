@@ -1,0 +1,91 @@
+@charset "utf-8";
+.form-heading {
+    background-color: #3C5A4C;
+    color: #FFFFFF;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+}
+.label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: medium;
+}
+.tab li {
+    /* [disabled]border: thin solid #FFFFFF; */
+    display: inline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-bottom: 15px;
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    /* background-color: #AEAAAA; */
+    font-size: large;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-top: 0px;
+}
+ul.tab{
+	padding: 5px 0px;
+}
+ul.tab> li > a{
+    text-decoration: none;
+	color: inherit;
+	cursor: inherit;
+	padding: 15px 5px;
+    background-color: #AEAAAA;
+    width: 100%;
+}
+
+li:hover    {
+    background-color: #DFDFDF;
+    /*border-bottom: none; */
+    color: #000000;
+}
+
+.tab li .active {
+    background-color: rgba(223,223,223,1.00);
+}
+
+
+.bg-light {
+    background-color: #DFDFDF !important;
+}
+a.btn {
+    font-weight: bold;
+}
+
+
+.tab {
+    margin-top: 0px;
+}
+
+.sf_label {
+    font-size: medium;
+}
+.sf-form-body {
+    background-color: #DFDFDF;
+}
+.input {
+    color: #2BA059;
+}
+.table-header {
+    background-color: #3C5A4C;
+    color: #FFFFFF;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

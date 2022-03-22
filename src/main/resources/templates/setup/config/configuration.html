@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Salary And Allowence</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-3 text-center">
+          <h5>department</h5>
+        </div>
+        <div class="col-lg-6 text-center">
+          <h3>Department Information</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5>20 Dec 2020 09:41 AM</h5>
+  		</div>
+  </div>
+<div class="row sf-form-body">
+<div class="col-lg-12 col-12">
+      <div class="row mx-0">
+        <ul class="tab col-lg-12">
+          <li class="col-lg-4"> <a href="sf_department.html">
+            <h3>Department</h3>
+            </a>          </li>
+          <li class="col-lg-4"><a href="sf_section.html">
+          <h3>Section</h3>
+          </a>
+            
+          </li>
+          <li class="col-lg-4"><a href="sf_configuration.html">
+          <h3>Configuration</h3>
+          </a>
+            
+          </li>
+        </ul>
+<div class="col-12 card bg-light mx-auto">
+  <form class="card-body label">
+<div class="row" id="salaryAddition">
+  
+  <div class="form-group row col-lg-12">
+  <label for="location1" class="col-form-label col-lg-3"><span class="float-left">Department Id</span><span class="float-right">:</span></label>
+  <div class="col-lg-7">
+    <input type="text" class="form-control" id="empNID" aria-describedby="basic-addon1">
+  </div>
+<!--
+                  <select class="form-control" name="location" id="location1">
+                    <option value="">Any</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                  </select>
+-->
+</div>
+<div class="form-group row col-lg-12">
+  <label for="location1" class="col-form-label col-lg-3"><span class="float-left">Department Name</span><span class="float-right">:</span></label>
+  <div class="col-lg-7">
+    <input type="text" class="form-control" id="empFingerID" aria-describedby="basic-addon1">
+  </div>
+</div>
+<div class="form-group row col-lg-12">
+  <label for="location24" class="col-form-label col-lg-3"><span class="float-left">Description</span><span class="float-right">:</span></label>
+  <div class="col-lg-7">
+    <input type="text" class="form-control" id="empName" aria-describedby="basic-addon1">
+  </div>
+  <!--
+                  <select class="form-control" name="location" id="location1">
+                    <option value="">Any</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                  </select>
+-->
+</div>
+
+<div class="form-group row col-lg-12">
+  <label for="location2" class="col-form-label col-lg-3"><span class="float-left">Responsibility</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" id="empSalaryBasic" aria-describedby="basic-addon1">
+          </div>
+  </div>
+      <div class="form-group row col-lg-12">
+        <label for="location2" class="col-form-label col-lg-3"><span class="float-left">Manager Name</span><span class="float-right">:</span></label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" id="empHouseRent" aria-describedby="basic-addon1">
+          </div>
+      </div>
+      <div class="form-group row col-lg-12">
+        <label for="location6" class="col-form-label col-lg-3"><span class="float-left">No of Employee</span><span class="float-right">:</span></label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" id="empMedicalAllowance" aria-describedby="basic-addon1">
+          </div>
+      </div>
+  <div class="form-group row col-lg-12">
+    <label for="location3" class="col-form-label col-lg-3"><span class="float-left">Address Id</span><span class="float-right">:</span></label>
+    <div class="col-lg-7">
+      <input type="text" class="form-control" id="empClinicalAllowance" aria-describedby="basic-addon1">
+      </div>
+    <!--
+                  <select class="form-control" name="location" id="location1">
+                    <option value="">Any</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                  </select>
+-->
+  </div>
+      <div class="form-group row col-lg-12">
+        <label for="location4" class="col-form-label col-lg-3"><span class="float-left">Department Start Date</span><span class="float-right">:</span></label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control input" id="empAttdAllowance" aria-describedby="basic-addon1">
+          </div>
+        <!--
+                  <select class="form-control" name="location" id="location1">
+                    <option value="">Any</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                  </select>
+-->
+      </div>
+  <div class="form-group row col-lg-12">
+    <label for="location2" class="col-form-label col-lg-3"><span class="float-left">Department End Date</span><span class="float-right">:</span></label>
+    <div class="col-lg-7">
+      <input type="text" class="form-control" id="empDearnessAlloance" aria-describedby="basic-addon1">
+      </div>
+  </div>
+      <div class="form-group row col-lg-12">
+        <label for="location2" class="col-form-label col-lg-3"><span class="float-left">Department Serial</span><span class="float-right">:</span></label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" id="empNonPracticeAllowance" aria-describedby="basic-addon1">
+          </div>
+      </div>
+      <div class="form-group row col-lg-12">
+        <label for="location2" class="col-form-label col-lg-3"><span class="float-left">Status</span><span class="float-right">:</span> </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" id="empConveyanceAllowance" aria-describedby="basic-addon1">
+          </div>
+      </div>
+<div class="form-group col-lg-12 text-center mt-lg-4">
+  <p><a href="#" class="btn btn-danger btn-lg col-lg-2 mr-5 col-sm-5 col-xs-3" role="button">Cancel</a></p>
+        <p><a href="#" class="btn btn-success btn-lg col-lg-2 col-sm-5 col-xs-3" role="button">Save</a></p>
+    </div>
+  </div>
+</form>
+        </div>
+</div>
+        </div>
+  </div>
+  </div>
+<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>

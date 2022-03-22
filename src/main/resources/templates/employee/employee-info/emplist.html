@@ -1,0 +1,128 @@
+<!-- ==============================================================
+Author: Md. Saifur Rahman 
+Created Date:18-Dec-202
+Last Update: 06-Jan-2021
+============================================================== -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee List </title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-1 text-left">
+          <h5>emplist</h5>
+        </div>
+        <div class="col-lg-6 text-center">
+          <h3>Employee List</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+	<div class="row sf-form-body">
+		<div class="col-lg-12 col-12">
+		      <div class="row mx-0">
+		          <!-- <ul class="tab col-lg-12">
+			          <li class="col-lg-2"> 		<a href="/employee-add"		> <h3> 	Employee	</h3> </a> 	</li>
+			          <li class="col-lg-2 active"> 	<a href="/address-add"		> <h3>	Address		</h3> </a>	</li>
+			          <li class="col-lg-2">			<a href="/education-add"	> <h3>	Education	</h3> </a>	</li>
+			          <li class="col-lg-2">			<a href="/experience-add"	> <h3>	Experience	</h3> </a>	</li>
+			          <li class="col-lg-2">			<a href="/relative-add"		> <h3>	Relative	</h3> </a>	</li>
+			          <li class="col-lg-2">			<a href="/nominee-add"		> <h3>	Nominee		</h3> </a>	</li>
+		          </ul> -->
+		      
+              <form class="form-group row col-lg-12" action="#" th:action="@{/employee-list-find}" method="post">
+	              <div class="form-group row col-lg-12 mt-4">
+	                <label for="religion" class="col-form-label col-lg-3"><b>
+	                	<span class="float-left">Find Employee By</span>
+	                	<span class="float-right">:</span></b>
+	                </label>
+	                <div class="input-group col-lg-7">
+					  <select class="form-control" name="findBy" onchange="changeInput(this.value)"
+					  	required="required">
+					    <option value="Name" 		> Name         </option>
+					    <option value="NickName" 	> Nick Name     </option>
+					    <option value="EmployeeId" 	> Employee Id  </option>
+					    <option value="NID" 		> NID          </option>
+					    <option value="FingerId" 	> Finger Id    </option>
+					  </select>
+	                </div>
+	          	  </div>
+	          	  
+	          	  <div class="form-group row col-lg-12">
+	                <label for="findByValue"  class="col-form-label col-lg-3"><b>
+	                	<span class="float-left" id="findByValueLabel">Enter any Name</span>
+	                	<span class="float-right">:</span> </b>
+	                </label>
+					<div class="col-lg-6">
+					  <input type="text" class="form-control" id="findByValue" name="findByValue" 
+					  	placeholder="Enter some character of Name" required="required">
+	                </div>
+					<div class="col-lg-2">
+						<button type="submit" class="btn btn-success btn-lg col-lg-12">Search </button> 
+					</div>
+					
+	              </div>
+              </form>
+              
+				<div class="col-12 card bg-light mx-auto" th:if="${show == true}" >
+				    <div class="form-group row col-lg-12">
+					  <table width="100%" border="1" class="table table-bordered table-hover table-borderless">
+					    <tbody class="text-center">
+					      <tr class="table-header">
+					        <th scope="col">SL</th>
+					        <th scope="col">Employee ID</th>
+					        <th scope="col">NID</th>
+					        <th scope="col">Finger ID</th>
+					        <th scope="col">Name</th>
+					        <th scope="col">Nick Name</th>
+					        <th scope="col" th:if="${flag == null}" >Action</th>
+					        <th scope="col" th:unless="${flag == null}" >Select</th>
+					      </tr>
+					      <tr th:each="employee : ${allEmployee}">
+					      	<td th:text="${employeeStat.count}"></td>
+					      	<td th:text="${employee.employeeId}"> ID </td>
+					      	<td th:text="${employee.NID}"> NID </td>
+					      	<td th:text="${employee.fingerId}"> Finger ID </td>
+					      	<td th:text="${employee.fullName}"> Name </td>
+					      	<td th:text="${employee.nickName}"> Nick Name </td>
+					      	<td th:if="${flag == null}" > <a th:href="@{employee-details(id=${employee.employeeId})}" class="btn btn-success btn-sm" >Details</a></td>
+					      	
+					      	<td th:if="${flag != null}" > <a th:href="@{employee-select(id=${employee.employeeId}, reqflag=${flag})}" class="btn btn-info btn-sm" >Select ID</a></td>
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+    <script src="js/emplist.js"></script>
+    <script type="text/javascript">
+    </script>
+  </body>
+</html>

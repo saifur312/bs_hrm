@@ -1,0 +1,231 @@
+<!-- ==============================================================
+Author: Md. Saifur Rahman 
+Created Date:10-Jan-2021
+Last Update: 14-Jan-2021
+============================================================== -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Address Setup</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-2 text-left">
+          <p style="font-style: italic;">address</p>
+        </div>
+        <div class="col-lg-7 text-center">
+          <h3>Address</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+<div class="row sf-form-body">
+	<div class="col-lg-12 col-12">
+      <div class="row mx-0">
+          <ul class="tab col-lg-12">
+	          <li class="col-lg-2"> 		<a href="/employee-add"		class="btn btn-lg "> <h3> 	Employee	</h3> </a> 	</li>
+	          <li class="col-lg-2 active"> 	<a href="/address-add"		class="btn btn-lg "> <h3>	Address		</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/education-add"	class="btn btn-lg "> <h3>	Education	</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/experience-add"	class="btn btn-lg "> <h3>	Experience	</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/dependents-add"	class="btn btn-lg "> <h3>	Dependents	</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/nominee-add"		class="btn btn-lg "> <h3>	Nominee		</h3> </a>	</li>
+          </ul>
+<div class="col-12 card bg-light mx-auto">
+  <form class="label" action="#" th:action="@{/address-add-save}" th:object="${address}" method="post">      
+    
+			  <div class="form-group row col-lg-12">
+		        <label for="employeeId" class="col-form-label col-lg-2">
+				  <span class="float-left">Employee ID</span><span class="float-right">:</span>
+			    </label>
+			    <div class="col-lg-7">
+				  <select class="form-control" th:field="*{employeeId}">
+					<option value="0">Select One</option>
+					<option th:each="employee : ${allEmployee}" th:text="${employee.employeeId}  +${'    '+ employee.fullName}"
+						th:value="${employee.employeeId}"></option>
+				  </select>
+		        </div>
+		      </div>
+    <div class="form-group row col-lg-12">
+      <label for="location2" class="col-form-label col-lg-2"><span class="float-left">Address Id</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+        <input type="text" required="required" class="form-control" th:field="*{addressId}" readonly="readonly">
+      </div>
+    </div>
+    <div class="form-group row col-lg-12">
+      <label for="location2" class="col-form-label col-lg-2"><span class="float-left">Address Type</span><span class="float-right">:</span> </label>
+      <div class="col-lg-7">
+        <select name="select" class="form-control" th:field="*{addressType}">
+			<option value="Present">Present</option>
+			<option value="Permanent">Permanent</option>
+        </select>
+	  </div>
+    </div>
+    <div class="form-group row col-lg-12">
+      <label for="location2" class="col-form-label col-lg-2"><span class="float-left">Division</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+		  <select class="form-control" th:field="*{divisionCode}">
+			<option value="0">Select One</option>
+			<option th:each="code : ${allCode.?[codeType == 'Dv']}" 
+				th:text="${code.name}" th:value="${code.codeId}"></option>
+		  </select>
+      </div>
+    </div>
+    <div class="form-group row col-lg-12">
+      <label for="location2" class="col-form-label col-lg-2"><span class="float-left">District Code</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+		  <select class="form-control" th:field="*{districtCode}">
+			<option value="0">Select One</option>
+			<option th:each="code : ${allCode.?[codeType == 'Ds']}" 
+				th:text="${code.name}" th:value="${code.codeId}"></option>
+		  </select>
+      </div>
+    </div>
+<div class="form-group row col-lg-12">
+  <label for="location6" class="col-form-label col-lg-2"><span class="float-left">Sub District Code</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+		  <select class="form-control" th:field="*{subDistrictCode}">
+			<option value="0">Select One</option>
+			<option th:each="code : ${allCode.?[codeType == 'SDs']}" 
+				th:text="${code.name}" th:value="${code.codeId}"></option>
+		  </select>
+      </div>
+  </div>
+    <div class="form-group row col-lg-12">
+      <label for="priceto" class="col-form-label col-lg-2"><span class="float-left">City</span><span class="float-right">:</span></label>
+      <div class="input-group col-lg-7">
+		  <select class="form-control" th:field="*{city}">
+			<option value="0">Select One</option>
+			<option th:each="code : ${allCode.?[codeType == 'Ci']}" 
+				th:text="${code.name}" th:value="${code.codeId}"></option>
+		  </select>
+      </div>
+    </div>
+    <div class="form-group row col-lg-12">
+  <label for="location3" class="col-form-label col-lg-2"><span class="float-left">Village Code</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+		  <select class="form-control" th:field="*{villageCode}">
+			<option value="0">Select One</option>
+			<option th:each="code : ${allCode.?[codeType == 'V']}" 
+				th:text="${code.name}" th:value="${code.codeId}"></option>
+		  </select>
+      </div>
+</div>
+    <div class="form-group row col-lg-12">
+      <label for="location4" class="col-form-label col-lg-2"><span class="float-left">Postal Code</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+		  <select class="form-control" th:field="*{postalCode}">
+			<option value="0">Select One</option>
+			<option th:each="code : ${allCode.?[codeType == 'P']}" 
+				th:text="${code.name}" th:value="${code.codeId}"></option>
+		  </select>
+      </div>
+    </div>
+    
+    <div class="form-group row col-lg-12">
+      <label for="pricefrom" class="col-form-label col-lg-2"><span class="float-left">Area Code</span><span class="float-right">:</span></label>
+      <div class="input-group col-lg-7">
+		  <select class="form-control" th:field="*{areaCode}">
+			<option value="0">Select One</option>
+			<option th:each="code : ${allCode.?[codeType == 'A']}" 
+				th:text="${code.name}" th:value="${code.codeId}"></option>
+		  </select>
+      </div>
+    </div>
+    <div class="form-group row col-lg-12">
+      <label for="location5" class="col-form-label col-lg-2"><span class="float-left">Region</span><span class="float-right">:</span></label>
+      <div class="input-group col-lg-7">
+        <input type="text" class="form-control" th:field="*{region}">
+      </div>
+    </div>
+    
+    <div class="form-group row col-lg-12">
+      <label for="location2" class="col-form-label col-lg-2"><span class="float-left">Road No</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+        <input type="text" class="form-control" th:field="*{roadNo}">
+      </div>
+    </div>
+    <div class="form-group row col-lg-12">
+  <label for="location2" class="col-form-label col-lg-2"><span class="float-left">House No</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+        <input type="text" class="form-control" th:field="*{houseNo}">
+      </div>
+  </div>
+<div class="form-group row col-lg-12">
+  <label for="location2" class="col-form-label col-lg-2"><span class="float-left">Apartment No</span><span class="float-right">:</span></label>
+      <div class="col-lg-7">
+        <input type="text" class="form-control" th:field="*{apartmentNo}">
+      </div>
+  </div>
+  <div class="form-group row col-lg-12">
+    <label for="location18" class="col-form-label col-lg-2"><span class="float-left">Status</span><span class="float-right">:</span>&nbsp;</label>
+    <div class="input-group col-lg-7">
+		<select  class="form-control" id="" th:field="*{status}">
+			<option value="1">Active</option>
+			<option value="0">Inactive</option>
+  		</select>
+    </div>
+  </div>
+  <div class="form-group row col-lg-12">
+    <label for="location5" class="col-form-label col-lg-2"><span class="float-left">Filler-1</span><span class="float-right">:</span></label>
+    <div class="input-group col-lg-7">
+      <input type="text" class="form-control" id="" th:field="*{filler1}">
+    </div>
+  </div>
+  <div class="form-group row col-lg-12">
+    <label for="location5" class="col-form-label col-lg-2"><span class="float-left">Filler-2</span><span class="float-right">:</span></label>
+    <div class="input-group col-lg-7">
+      <input type="text" class="form-control" id="" th:field="*{filler2}">
+    </div>
+  </div>
+  <div class="form-group row col-lg-12">
+    <label for="location5" class="col-form-label col-lg-2"><span class="float-left">Filler-3</span><span class="float-right">:</span></label>
+    <div class="input-group col-lg-7">
+      <input type="text" class="form-control" id="" th:field="*{filler3}">
+    </div>
+  </div>
+  <div class="form-group row col-lg-12">
+    <label for="location5" class="col-form-label col-lg-2"><span class="float-left">Filler-4</span><span class="float-right">:</span></label>
+    <div class="input-group col-lg-7">
+      <input type="text" class="form-control" id="" th:field="*{filler4}">
+    </div>
+  </div>
+  <div class="form-group row col-lg-12">
+    <label for="location5" class="col-form-label col-lg-2"><span class="float-left">Filler-5</span><span class="float-right">:</span></label>
+    <div class="input-group col-lg-7">
+      <input type="text" class="form-control" id="" th:field="*{filler5}">
+    </div>
+  </div>
+
+              <div class="form-group col-lg-12 text-center mt-lg-4">
+            	<a href="#" class="btn btn-danger btn-lg col-lg-2 mr-lg-5" role="button">Cancel</a>
+            	<button type="submit" class="btn btn-success btn-lg col-lg-2">Save </button>
+              </div>
+            </form>
+        </div>
+</div>
+        </div>
+  </div>
+  </div>
+    <footer class="container text-center form-heading">
+      <div class="row">
+        <div class="col-12">
+          <p>Copyright © BilkisSoft . All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>

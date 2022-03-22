@@ -1,0 +1,316 @@
+<!-- ==============================================================
+Author: Md. Saifur Rahman 
+Created Date:18-Dec-202
+Last Update: 06-Jan-2021
+============================================================== -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Details</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+  <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row form-heading">
+      <div class="col-lg-1 text-left">
+        <h4>empdet</h4>
+      </div>
+      <div class="col-lg-7 text-center">
+        <h3>Employee Details</h3>
+      </div>
+      <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  	  </div>
+    </div>
+	<div class="row sf-form-body">
+	  <div class="col-lg-12 col-12">
+        <div class="row mx-0">
+          <!-- <ul class="tab col-lg-12">
+	          <li class="col-lg-2"> 		<a href="/employee-add"		class="btn btn-lg "> <h3> 	Employee	</h3> </a> 	</li>
+	          <li class="col-lg-2 active"> 	<a href="/address-add"		class="btn btn-lg "> <h3>	Address		</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/education-add"	class="btn btn-lg "> <h3>	Education	</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/experience-add"	class="btn btn-lg "> <h3>	Experience	</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/dependents-add"	class="btn btn-lg "> <h3>	Dependents	</h3> </a>	</li>
+	          <li class="col-lg-2">			<a href="/nominee-add"		class="btn btn-lg "> <h3>	Nominee		</h3> </a>	</li>
+          </ul> -->
+		  <div class="col-12 card bg-light mt-4">
+  		    <form class="label" action="#" th:action="@{#}" th:object="${employeeDto}" method="post">
+              
+              <!-- <input type="hidden" class="form-control" id="" th:field="*{employeeId}" > -->
+              
+              <div class="form-group row col-lg-12">
+                <label for="location1" class="col-form-label col-lg-3"><span class="float-left">NID</span><span class="float-right">:</span>&nbsp; </label>
+				<div class="col-lg-7">
+				  <input type="text" class="form-control" id="" th:field="*{NID}" readonly="readonly">
+                </div>
+				<!-- <div class="col-lg-2"><a href="#" class="btn btn-primary col-lg-12" role="button">Search</a> </div> -->
+              </div>
+              
+              <div class="form-group row col-lg-12">
+                <label for="location1" class="col-form-label col-lg-3"><span class="float-left">Employee ID</span><span class="float-right">:</span>&nbsp;</label>
+                <div class="col-lg-7">
+                  <input type="text" class="form-control" id="" th:field="*{employeeId}" readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="location1" class="col-form-label col-lg-3"><span class="float-left">Finger ID</span><span class="float-right">:</span></label>
+                <div class="col-lg-7">
+                  <input type="text" class="form-control" id=""  th:field="*{fingerId}" readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="location24" class="col-form-label col-lg-3"><span class="float-left">Employee Name</span><span class="float-right">:</span>&nbsp; </label>
+                <div class="col-lg-7">
+                  <input type="text" class="form-control" id="" th:field="*{fullName}" readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="location24" class="col-form-label col-lg-3"><span class="float-left">Job Id</span><span class="float-right">:</span>&nbsp; </label>
+                <div class="col-lg-7">
+				  <select class="form-control"  id="" th:field="*{jobId}" readonly="readonly">
+					<option value="0">Select One</option>
+				  </select>
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="location2" class="col-form-label col-lg-3"><span class="float-left">Nick Name</span><span class="float-right">:</span>&nbsp; </label>
+                <div class="col-lg-7">
+                  <input type="text" class="form-control" id="" th:field="*{nickName}" readonly="readonly">
+                </div>
+              </div>
+			  <div class="form-group row col-lg-12">
+                <label for="location1" class="col-form-label col-lg-3">
+				  <span class="float-left">Department</span><span class="float-right">:</span>&nbsp;
+			    </label>
+			    <div class="col-lg-7">
+				  <select class="form-control" id="" th:field="*{departmentId}" readonly="readonly">
+					<option value="0">Select One</option>
+				  </select>
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="location1" class="col-form-label col-lg-3"><span class="float-left">Section</span><span class="float-right">:</span>&nbsp;</label>
+				<div class="col-lg-7">
+		          <select class="form-control" id="" th:field="*{sectionId}" readonly="readonly">
+				    <option value="0">Select One</option>
+				  </select>
+                </div>
+              </div>
+
+	            <!-- <div class="form-group row col-lg-12">
+	              <label for="location1" class="col-form-label col-lg-3"><span class="float-left">Designation</span><span class="float-right">:</span>&nbsp;</label>
+				  <div class="col-lg-7">
+					<select  class="form-control" id="designationId">
+					  <option value="0">Select One</option>
+					  </select>
+	              </div>
+	            </div> -->
+
+              <div class="form-group row col-lg-12">
+                <label for="location1" class="col-form-label col-lg-3"><span class="float-left">Category</span><span class="float-right">:</span>&nbsp;</label>
+			    <div class="col-lg-7">
+				  <select class="form-control" id="" th:field="*{categoryId}" readonly="readonly">
+				    <option value="0">Select One</option>
+			      </select>
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="pricefrom" class="col-form-label col-lg-3"><span class="float-left">Gender</span><span class="float-right">:</span>&nbsp;</label>
+                <div class="input-group col-lg-7">
+				  <select  class="form-control" id="" th:field="*{gender}" readonly="readonly">
+				    <option value="">Select One</option>
+				  </select>
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="priceto" class="col-form-label col-lg-3"><span class="float-left">Religion</span><span class="float-right">:</span>&nbsp;</label>
+                <div class="input-group col-lg-7">
+				  <select  class="form-control" id="" th:field="*{religion}" readonly="readonly">
+				    <option value="">Select One</option>
+				  </select>
+                </div>
+          	  </div>
+              <div class="form-group row col-lg-12">
+                <label for="location4" class="col-form-label col-lg-3"><span class="float-left">Mobile No</span><span class="float-right">:</span>&nbsp;</label>
+                <div class="input-group col-lg-7">
+                    <input type="text" class="form-control" id="" th:field="*{mobileNo}" readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="location3" class="col-form-label col-lg-3"><span class="float-left">Email</span><span class="float-right">:</span>&nbsp;</label>
+                <div class="input-group col-lg-7">
+                    <input type="email" class="form-control" id="" th:filed="${email}" readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group row col-lg-12">
+                <label for="location7" class="col-form-label col-lg-3"><span class="float-left">TIN</span><span class="float-right">:</span>&nbsp;</label>
+                <div class="input-group col-lg-7">
+                    <input type="text" class="form-control" id="" th:field="*{tin}" readonly="readonly">
+                </div>
+              </div>
+            <div class="form-group row col-lg-12">
+                  <label for="location8" class="col-form-label col-lg-3"><span class="float-left">PF ID</span><span class="float-right">:</span>&nbsp;</label>
+                  <div class="input-group col-lg-7">
+					<input type="text" class="form-control" id="" th:field="*{pfID}" readonly="readonly">
+                  </div>
+            </div>
+			<div class="form-group row col-lg-12">
+              <label for="location12" class="col-form-label col-lg-3"><span class="float-left">PF Join Date</span><span class="float-right">:</span>&nbsp;</label>
+                  <div class="input-group col-lg-7">
+                    <input type="text" class="form-control" id="" th:field="*{pfJoinDate}" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location13" class="col-form-label col-lg-3"><span class="float-left">DOB</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                    <input type="text" class="form-control" id="" th:field="*{dob}" readonly="readonly">
+              </div>
+            </div>
+                <div class="form-group row col-lg-12">
+                  <label for="location10" class="col-form-label col-lg-3"><span class="float-left">Application Date</span><span class="float-right">:</span>&nbsp;</label>
+                  <div class="input-group col-lg-7">
+                    <input type="text" class="form-control" id="" th:field="*{appliacationDate}" readonly="readonly">
+                  </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location6" class="col-form-label col-lg-3"><span class="float-left">Interview Date</span><span class="float-right">:</span>&nbsp;</label>
+                  <div class="input-group col-lg-7">
+                    <input type="text" class="form-control" id="" th:field="*{interviewDate}" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location9" class="col-form-label col-lg-3"><span class="float-left">Join Date</span><span class="float-right">:</span>&nbsp;</label>
+                  <div class="input-group col-lg-7">
+                    <input type="text" class="form-control" id="" th:field="*{joinDate}" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location14" class="col-form-label col-lg-3"><span class="float-left">Confirm Date</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{confirmDate}" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location15" class="col-form-label col-lg-3"><span class="float-left">Final Settle Date</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{finalSettleDate}" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location23" class="col-form-label col-lg-3"><span class="float-left">Increment Date</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{incrementDate}" readonly="readonly">
+              </div>
+
+            </div>
+			<div class="form-group row col-lg-12">
+              <label for="location17" class="col-form-label col-lg-3"><span class="float-left">Promotion Date</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{promotionDate}" readonly="readonly">
+              </div>
+
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location18" class="col-form-label col-lg-3"><span class="float-left">Status</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+				<select  class="form-control" id="" th:field="*{status}" readonly="readonly">
+				  <option value="">Select One</option>
+				  </select>
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location19" class="col-form-label col-lg-3"><span class="float-left">Retierment Date</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{retiermentDate}" readonly="readonly">
+              </div>
+
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location21" class="col-form-label col-lg-3"><span class="float-left">Nationality</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{nationality}" readonly="readonly">
+              </div>
+
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location22" class="col-form-label col-lg-3"><span class="float-left">Emergency Contact</span><span class="float-right">:</span>&nbsp;</label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{emergencyContact}" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location5" class="col-form-label col-lg-3"><span class="float-left">Blood Group</span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+				<select  class="form-control" id="" th:field="*{bloodGroup}" readonly="readonly">
+				  <option value="">Select One</option>
+				  </select>
+              </div>
+
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location5" class="col-form-label col-lg-3"><span class="float-left">Marital Status </span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+				<select  class="form-control" id="" th:field="*{maritalStatus}" readonly="readonly">
+				  <option value="">Select One</option>
+				  </select>
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location5" class="col-form-label col-lg-3"><span class="float-left">Net Salary </span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{basicSalary}" readonly="readonly">
+              </div>
+
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location5" class="col-form-label col-lg-3"><span class="float-left">Grade </span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+				<select  class="form-control" id="" th:field="*{grade}" readonly="readonly">
+				  <option value="0">Select One</option>
+				  </select>
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="location5" class="col-form-label col-lg-3"><span class="float-left">Leave Balance</span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" id="" th:field="*{leaveBalance}" readonly="readonly">
+              </div>
+            </div>
+            <div class="form-group col-lg-12 text-center mt-lg-4">
+            	<a href="employee-list" class="btn btn-danger btn-lg col-lg-2 mr-lg-5" role="button">Cancel</a>
+            	<!-- <a th:href="@{employee-edit(id=${employeeDto.employeeId})}" class="btn btn-success btn-lg col-lg-2 mr-lg-5" >Update</a> -->
+            </div>
+		</form>
+        </div>
+</div>
+        </div>
+  </div>
+  </div>
+	<footer class="text-center form-heading">
+  <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © BilkisSoft . All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script type="text/javascript">
+    	const today = moment();
+        console.log(today.format());
+    </script>
+  </body>
+</html>

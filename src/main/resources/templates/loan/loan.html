@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loan Information</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-2 text-left">
+           <p style="font-style: italic; font-size: smaller;"> loan</p>
+        </div>
+        <div class="col-lg-7 text-center">
+          <h3> Loan Information</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+  <div class="row sf-form-body">
+    <div class="col-lg-12 col-12">
+      <div class="row mx-0">
+        <div class="col-12 card bg-light mx-auto">
+          <form class="card-body label"  action="#" th:action="@{/loan-add-save}" th:object="${loan}" method="post">
+			  <div class="form-group row col-lg-12">
+                <label for="employeeId" class="col-form-label col-lg-3">
+				  <span class="float-left">Employee ID</span><span class="float-right">:</span>
+			    </label>
+			    <div class="col-lg-7">
+				  <select class="form-control" th:field="*{employeeId}">
+					<option value="0">Select One</option>
+					<option th:each="employee : ${allEmployee}" th:text="${employee.employeeId}"
+						th:value="${employee.employeeId}"></option>
+				  </select>
+                </div>
+              </div>
+              
+            <div class="form-group row col-lg-12">
+              <div class="col-lg-6">
+	              <label for="totalHours" class="col-form-label col-lg-5 float-left"><span class="float-left"> Name&nbsp;</span><span class="float-right">:</span></label>
+	              <div class="col-lg-7 float-right">
+	                <input type="text" class="form-control" readonly="readonly" id="employeeName">
+	              </div>
+              </div>
+              <div class="col-lg-6">
+	              <label for="totalHours" class="col-form-label col-lg-5 float-left"><span class="float-left">Salary(Basic)&nbsp;</span><span class="float-right">:</span></label>
+	              <div class="col-lg-7 float-right">
+	                <input type="text" class="form-control" readonly="readonly" id="basicSalary">
+	              </div>
+              </div>
+            </div>
+            
+			<div class="form-group row col-lg-12">
+              <label for="loanAmount" class="col-form-label col-lg-3"><span class="float-right">&nbsp;:</span><span class="float-left">&nbsp;</span>Loan Amount&nbsp; &nbsp; &nbsp;</label>
+              <div class="col-lg-7">
+                <input type="text" class="form-control" th:field="*{loanAmount}">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="transactionDateStr" class="col-form-label col-lg-3"><span class="float-left">Transaction Date&nbsp;</span><span class="float-right">:</span></label>
+              <div class="col-lg-7">
+                <input type="text" class="form-control" th:field="*{transactionDateStr}" placeholder="yyyy-mm-dd">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="filler1" class="col-form-label col-lg-3"><span class="float-left">Loan End Date</span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" th:field="*{loanEndDateStr}" placeholder="yyyy-mm-dd">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="deductionType" class="col-form-label col-lg-3"><span class="float-left">Deduction type&nbsp;</span><span class="float-right">:</span>&nbsp; </label>
+              <div class="col-lg-7">
+		        <select name="select" class="form-control" th:field="*{deductionType}">
+					<option value="Monthly">Monthly</option>
+					<option value="Yearly">Yearly</option>
+		        </select>
+                <!-- <input type="text" class="form-control" th:field="*{deductionType}"> -->
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="deductionType" class="col-form-label col-lg-3"><span class="float-left">Deduction Amount&nbsp;</span><span class="float-right">:</span>&nbsp; </label>
+              <div class="col-lg-7">
+                <input type="text" class="form-control" th:field="*{deductionAmount}" readonly="readonly">
+              </div>
+            </div>
+			<div class="form-group row col-lg-12">
+			  <label for="remarks" class="col-form-label col-lg-3"><span class="float-left">Remarks&nbsp;</span><span class="float-right">:</span></label>
+			  <div class="input-group col-lg-7">
+			    <input type="text" class="form-control" th:field="*{remarks}">
+			  </div>
+			</div>
+            <div class="form-group row col-lg-12">
+              <label for="filler2" class="col-form-label col-lg-3"><span class="float-left">Filler-2</span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" th:field="*{filler2}">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="filler3" class="col-form-label col-lg-3"><span class="float-left">Filler-3</span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" th:field="*{filler3}">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="filler4" class="col-form-label col-lg-3"><span class="float-left">Filler-4</span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" th:field="*{filler4}">
+              </div>
+            </div>
+            <div class="form-group row col-lg-12">
+              <label for="filler5" class="col-form-label col-lg-3"><span class="float-left">Filler-5</span><span class="float-right">:</span></label>
+              <div class="input-group col-lg-7">
+                <input type="text" class="form-control" th:field="*{filler5}">
+              </div>
+            </div>
+            
+            <div class="form-group col-lg-12 text-center mt-lg-4">
+            	<a href="#" class="btn btn-danger btn-lg col-lg-2 mr-lg-5" role="button">Cancel</a>
+            	<!-- <a href="#" class="btn btn-success btn-lg col-lg-2" role="button">Save</a> -->
+            	<button type="submit" class="btn btn-success btn-lg col-lg-2">Save </button>
+            </div>
+          </form>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="text-center form-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>Copyright @BilkisSoft. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+    <script src="js/flatpickr_4.6.9.js"></script>  
+    <script src="js/bsoft/bsoft.js"></script>   
+    <script type="text/javascript">
+    
+    </script>
+  </body>
+</html>

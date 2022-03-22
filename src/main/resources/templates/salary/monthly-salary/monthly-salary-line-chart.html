@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monthly Salary Line Chart</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <link href="css/sf_hr.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+<div class="container">
+  <div class="row form-heading">
+        <div class="col-lg-2 text-left">
+           <p style="font-style: italic; font-size: smaller;">monthly-salary</p>
+        </div>
+        <div class="col-lg-7 text-center">
+          <h3> Monthly Salary Line Chart</h3>
+  		</div>
+        <div class="col-lg-3 text-center">
+          <h5 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy hh:mm a')}"> </h5>
+  		</div>
+  </div>
+  <div class="row sf-form-body">
+    <div class="col-lg-12 col-12">
+      <div class="row mx-0">
+        <div class="col-12 card bg-light mx-auto">
+        	
+	  <div class="row sf-form-body">
+	    <div class="col-lg-12 col-12">
+	      <div class="row mx-0">
+	        <div class="col-12 card bg-light mx-auto">
+	            <div class="card card-warning ">
+	              <div class="card-header">
+	                <h3 class="card-title">Line Chart </h3>
+	
+	                <div class="card-tools">
+	                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+	                    <i class="fas fa-minus"></i>
+	                  </button>
+	                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+	                    <i class="fas fa-times"></i>
+	                  </button>
+	                </div>
+	              </div>
+	              <div class="card-body">
+	                <div class="chart">
+	                  <canvas id="monthlySalary" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+	                </div>
+	              </div>
+	              <!-- /.card-body -->
+	            </div>
+			</div>
+	      </div>
+	    </div>
+	  </div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="text-center form-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>Copyright @BilkisSoft. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+    <script src="js/flatpickr_4.6.9.js"></script>  
+	<script type="text/javascript" src="js/chart.js"></script> 
+    <script src="js/bsoft/bsoft.js"></script>  
+	
+    <script th:inline="javascript">    
+	  $(function () {
+	  	
+	    var areaChartData = {
+	      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+	      datasets: [
+	        {
+	          label               : 'Digital Goods',
+	          backgroundColor     : 'rgba(60,141,188,0.9)',
+	          borderColor         : 'rgba(60,141,188,0.8)',
+	          pointRadius          : false,
+	          pointColor          : '#3b8bba',
+	          pointStrokeColor    : 'rgba(60,141,188,1)',
+	          pointHighlightFill  : '#fff',
+	          pointHighlightStroke: 'rgba(60,141,188,1)',
+	          data                : [28, 48, 40, 19, 86, 27, 90]
+	        },
+	        {
+	          label               : 'Electronics',
+	          backgroundColor     : 'rgba(210, 214, 222, 1)',
+	          borderColor         : 'rgba(210, 214, 222, 1)',
+	          pointRadius         : false,
+	          pointColor          : 'rgba(210, 214, 222, 1)',
+	          pointStrokeColor    : '#c1c7d1',
+	          pointHighlightFill  : '#fff',
+	          pointHighlightStroke: 'rgba(220,220,220,1)',
+	          data                : [65, 59, 80, 81, 56, 55, 40]
+	        },
+	      ]
+	    }
+    
+	    var areaChartOptions = {
+	      maintainAspectRatio : false,
+	      responsive : true,
+	      legend: {
+	        display: false
+	      },
+	      scales: {
+	        xAxes: [{
+	          gridLines : {
+	            display : false,
+	          }
+	        }],
+	        yAxes: [{
+	          gridLines : {
+	            display : false,
+	          }
+	        }]
+	      }
+	    }
+	    
+	    var userwiseSaleChartCanvas = $('#monthlySalary');
+	    new Chart(userwiseSaleChartCanvas, {
+	        type: 'line',
+	        data: {
+		        labels  : /*[[${monthlySalaryMap.keySet()}]]*/ [], 
+		        datasets: [
+		          {
+		            label               : 'Monthly Salary',
+		            backgroundColor     : 'rgba(249,84,84,0.9)',
+		            borderColor         : 'rgba(249,84,84,0.8)',
+		            pointRadius          : false,
+		            pointColor          : '#3b8bba',
+		            pointStrokeColor    : 'rgba(249,84,84,1)',
+		            pointHighlightFill  : '#fff',
+		            pointHighlightStroke: 'rgba(249,84,84,1)',
+		            data                : [[${monthlySalaryMap.values()}]]
+		          },
+		        ]
+	        },
+	        options: areaChartOptions
+	      }) 
+	    
+	  });
+    </script>
+  </body>
+</html>
